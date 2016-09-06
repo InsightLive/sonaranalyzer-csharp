@@ -22,6 +22,7 @@ using System.IO;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using SonarLint.Common;
+using System;
 
 namespace SonarLint.Runner
 {
@@ -39,6 +40,12 @@ namespace SonarLint.Runner
                     .AddMetadataReference(SystemMetadataReference);
 
                 var document = project.AddDocument(file.Name, File.ReadAllText(file.FullName, Encoding.UTF8));
+                var supportSyntaxTree = document.SupportsSyntaxTree;
+                if (!supportSyntaxTree)
+                {
+                    throw new Exception("The file " + filePath + " does not supports syntax Tree !!!");
+
+                }
                 project = document.Project;
 
                 return project.Solution;
