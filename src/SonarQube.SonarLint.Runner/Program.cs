@@ -138,7 +138,7 @@ namespace SonarLint.Runner
                                 xmlOut.WriteStartElement("Issue");
                                 xmlOut.WriteElementString("Id", diagnostic.Id);
                                 xmlOut.WriteElementString("Title", diagnostic.Descriptor.Title.ToString());
-                                xmlOut.WriteElementString("Severity", diagnostic.Severity.ToString());
+                                xmlOut.WriteElementString("Severity", diagnostic.Descriptor.DefaultSeverity.ToString());
                                 xmlOut.WriteElementString("link", diagnostic.Descriptor.HelpLinkUri);
                                 xmlOut.WriteElementString("Description", diagnostic.Descriptor.Description.ToString());
                                 xmlOut.WriteElementString("Category", diagnostic.Descriptor.Category.ToString());
